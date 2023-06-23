@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <h1 class="center">Resistencias</h1>
+    <div>
+        <label for="banda1">Banda 1 </label>
+        <select [(ngModel)]="banda1" name="banda1" id="banda1">
+            <option value="0" [ngStyle]="{'background-color': getHexaColor('0')}">Negro</option>
+            <option value="1" [ngStyle]="{'background-color': getHexaColor('1')}">Café</option>
+            <option value="2" [ngStyle]="{'background-color': getHexaColor('2')}">Rojo</option>
+            <option value="3" [ngStyle]="{'background-color': getHexaColor('3')}">Naranja</option>
+            <option value="4" [ngStyle]="{'background-color': getHexaColor('4')}">Amarillo</option>
+            <option value="5" [ngStyle]="{'background-color': getHexaColor('5')}">Verde</option>
+            <option value="6" [ngStyle]="{'background-color': getHexaColor('6')}">Azul</option>
+            <option value="7" [ngStyle]="{'background-color': getHexaColor('7')}">Violeta</option>
+            <option value="8" [ngStyle]="{'background-color': getHexaColor('8')}">Gris</option>
+            <option value="9" [ngStyle]="{'background-color': getHexaColor('9')}">Blanco</option>
+      
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="banda2">Banda 2 </label>
+        <select name="banda2" name="banda2" [(ngModel)]="banda2">
+            <option value="0" [ngStyle]="{'background-color': getHexaColor('0')}">Negro</option>
+            <option value="1" [ngStyle]="{'background-color': getHexaColor('1')}">Café</option>
+            <option value="2" [ngStyle]="{'background-color': getHexaColor('2')}">Rojo</option>
+            <option value="3" [ngStyle]="{'background-color': getHexaColor('3')}">Naranja</option>
+            <option value="4" [ngStyle]="{'background-color': getHexaColor('4')}">Amarillo</option>
+            <option value="5" [ngStyle]="{'background-color': getHexaColor('5')}">Verde</option>
+            <option value="6" [ngStyle]="{'background-color': getHexaColor('6')}">Azul</option>
+            <option value="7" [ngStyle]="{'background-color': getHexaColor('7')}">Violeta</option>
+            <option value="8" [ngStyle]="{'background-color': getHexaColor('8')}">Gris</option>
+            <option value="9" [ngStyle]="{'background-color': getHexaColor('9')}">Blanco</option>
+      
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="multiplicador">Multiplicador </label>
+        <select id="multiplicador" name="multiplicador" [(ngModel)]="multiplicador">
+            <option value="0" [ngStyle]="{'background-color': getHexaColor('0')}">Negro</option>
+            <option value="1" [ngStyle]="{'background-color': getHexaColor('1')}">Café</option>
+            <option value="2" [ngStyle]="{'background-color': getHexaColor('2')}">Rojo</option>
+            <option value="3" [ngStyle]="{'background-color': getHexaColor('3')}">Naranja</option>
+            <option value="4" [ngStyle]="{'background-color': getHexaColor('4')}">Amarillo</option>
+            <option value="5" [ngStyle]="{'background-color': getHexaColor('5')}">Verde</option>
+            <option value="6" [ngStyle]="{'background-color': getHexaColor('6')}">Azul</option>
+            <option value="7" [ngStyle]="{'background-color': getHexaColor('7')}">Violeta</option>
+            <option value="8" [ngStyle]="{'background-color': getHexaColor('8')}">Gris</option>
+            <option value="9" [ngStyle]="{'background-color': getHexaColor('9')}">Blanco</option>
+            <option value="10" [ngStyle]="{'background-color': getHexaMultiplierColor('10')}">Oro</option>
+            <option value="11" [ngStyle]="{'background-color': getHexaMultiplierColor('11')}">Plata</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label>Tolerancia</label>
+        <div>
+          <label>
+            <input type="radio" name="tolerancia" [(ngModel)]="tolerancia" [value]="'oro'">
+            Oro
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" name="tolerancia" [(ngModel)]="tolerancia" [value]="'plata'">
+            Plata
+          </label>
+        </div>
+      </div>
+    
+      <br>
+      <button (click)="CalcularResistencia()" >Calcular</button>
+         
+  
+      <h2>Resultados</h2>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Banda 1</th>
+            <th>Banda 2</th>
+            <th>Multiplicador</th>
+            <th>Tolerancia</th>
+            <th>Valor_resistencia</th>
+            <td>Valor_máximo:</td>
+            <td>Valor_mínimo:</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td [style.backgroundColor]="hexaBanda1"></td>
+            <td [style.backgroundColor]="hexaBanda2"></td>
+            <td [style.backgroundColor]="hexaMultip"></td>
+            <td [style.backgroundColor]="hexaTolerancia"></td>
+            <td>{{valorResistencia}} Ω</td>
+            <td>{{max_valor}} Ω</td>
+            <td>{{min_valor}} Ω</td>
+          </tr>
+        </tbody>
+      </table>
+     
+
+    
+
+
