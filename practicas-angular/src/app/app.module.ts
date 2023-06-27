@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ResistenciaComponent } from './practica2/resistencia/resistencia.component';
 import { ResisModule } from './practica2/resis/resis.module';
+import { CinepolisComponent } from './practica3/cinepolis/cinepolis.component';
+import { CineModule } from './practica3/cine/cine.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { ResisModule } from './practica2/resis/resis.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ResisModule
+    ResisModule,
+    CineModule
 
   ],
   providers: [],
