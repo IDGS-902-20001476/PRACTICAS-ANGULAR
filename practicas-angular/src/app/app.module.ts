@@ -7,16 +7,23 @@ import { ResistenciaComponent } from './practica2/resistencia/resistencia.compon
 import { ResisModule } from './practica2/resis/resis.module';
 import { CinepolisComponent } from './practica3/cinepolis/cinepolis.component';
 import { CineModule } from './practica3/cine/cine.module';
+import { MenuComponent } from './menu/menu.component';
+import { DistanciaComponent } from './practica1/distancia/distancia.component';
+import { DistModule } from './practica1/dist/dist.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ResisModule,
-    CineModule
+    CineModule,
+    DistModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],
