@@ -1,0 +1,143 @@
+<br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="form-field">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre">
+          </div>
+          <div class="form-field">
+            <label for="direccion">Dirección:</label>
+            <input type="text" class="form-control" id="direccion" [(ngModel)]="cliente.direccion">
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="form-field">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" [(ngModel)]="cliente.telefono">
+          </div>
+          <div class="form-field">
+            <label for="fecha">Fecha de Compra:</label>
+            <input type="date" class="form-control" id="fecha" [(ngModel)]="cliente.fechaCompra">
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="form-field">
+            <label>Tamaño:</label>
+            <div class="form-check">
+              <input type="radio" name="tamano" [(ngModel)]="pizza.tamano" value="Chica"
+                [disabled]="cliente.ineditable">
+              <label class="form-check-label">Chica $40</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="tamano" [(ngModel)]="pizza.tamano" value="Mediana"
+                [disabled]="cliente.ineditable">
+              <label class="form-check-label">Mediana $80</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="tamano" [(ngModel)]="pizza.tamano" value="Grande"
+                [disabled]="cliente.ineditable">
+              <label class="form-check-label">Grande $120</label>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Ingredientes:</label>
+            <div class="form-check" *ngFor="let ingrediente of ['Jamón', 'Piña', 'Champiñones']">
+              <input type="checkbox" [checked]="pizza.ingredientes.includes(ingrediente)"
+                (change)="toggleIngrediente(ingrediente)" [disabled]="cliente.ineditable">
+              <label class="form-check-label">
+                {{ ingrediente }} ${{ ingrediente === 'Chorizo' ? 12 : 10 }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="numeroPizzas">Número de Pizzas:</label>
+          <input type="number" class="form-control" id="numeroPizzas" [(ngModel)]="pizza.numeroPizzas"
+            [readonly]="cliente.ineditable">
+        </div>
+        <br>
+
+        <button class="btn btn-info " (click)="agregarPedido()">
+          {{ editarPedido ? 'Editar Pedido' : 'Agregar Pedido' }}
+        </button>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Pedidos</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tamaño</th>
+              <th>Ingredientes</th>
+              <th>Núm.Pizzas</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pedido of pedidos; let i = index">
+              <td>{{ pedido.pizza.tamano }}</td>
+              <td>{{ pedido.pizza.ingredientes.join(', ') }}</td>
+              <td>{{ pedido.pizza.numeroPizzas }}</td>
+              <td>{{ pedido.subtotal }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="editarArticulo(i)" [disabled]="cliente.ineditable">
+                  Editar
+                </button>
+                <button class="btn btn-danger" (click)="quitarPedido(i)" [disabled]="cliente.ineditable">
+                  Quitar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="total-ventas" *ngIf="pedidos.length > 0">
+          <button class="btn btn-success" (click)="terminarPedido()" [disabled]="cliente.ineditable">
+            Terminar
+          </button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Ventas</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <!-- <th>Dirección</th>
+              <th>Teléfono</th>
+              <th>Ingredientes</th> -->
+              <th>Fecha</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let venta of ventasAcumuladas">
+              <td>{{ venta.cliente.nombre }}</td>
+                <!-- <td>{{ venta.cliente.direccion }}</td>
+                <td>{{ venta.cliente.telefono }}</td>
+                <td>{{ venta.pizza.ingredientes.join(', ') }}</td> -->
+              <td>{{ venta.fecha }}</td>
+              <td>{{ venta.totalCompra }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="total-ventas">
+            <div class="form-group">
+              <label for="filtroFecha">Filtro de Fecha:</label>
+              <input type="date" class="form-control" id="filtroFecha" [(ngModel)]="filtroFecha">
+            </div>
+            <h3>Total de Ventas Filtradas: {{ obtenerTotalVentas() }}</h3>
+          </div>
+      </div>
+    </div>
+  </div>
+  

@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { DistanciaComponent } from './practica1/distancia/distancia.component';
 import { DistModule } from './practica1/dist/dist.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PizModule } from './practica4/piz/piz.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ResisModule,
     CineModule,
     DistModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PizModule
 
   ],
   providers: [],
